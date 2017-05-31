@@ -37,17 +37,12 @@ MJMaterialSwitch has many prateters to customize behaviors as you like.
 public enum MJMaterialSwitchStyle {
     case light, dark, medium
 }
-
 //MARK: - Initial MJMaterialSwitch size (big, normal, small)
 public enum MJMaterialSwitchSize {
     case big, normal, small
 }
 ```
- <img src="MJMaterialSwitch.png" height="480" width="320" align="center" />
- ![Screen shot]()
-
- ![Screen shot](Docs/bounce_ripple_enabled.gif)
-
+<img src="MJMaterialSwitch.png" height="480" width="320" align="center" />
 ## Author
 Jaleel Nazir <nazirjaleel@gmail.com>
 
