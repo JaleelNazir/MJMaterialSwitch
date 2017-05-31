@@ -42,7 +42,6 @@ public enum MJMaterialSwitchSize {
     case big, normal, small
 }
 ```
-<img src="MJMaterialSwitch.png" height="480" width="320" align="center" />
 ## Author
 Jaleel Nazir <nazirjaleel@gmail.com>
 
