@@ -1,7 +1,6 @@
 # MJMaterialSwitch
-Android Switch button for iOS
 
-![MJMaterialSwitch](Docs/MJMaterialSwitch_Title.png)
+![MJMaterialSwitch](TiitleTheme.png)
 
 ## Overview
 <img src="Docs/MJMaterialSwitch.png" width="250" align="right" />
