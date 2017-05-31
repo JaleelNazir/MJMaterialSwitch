@@ -32,33 +32,21 @@ The style, size and initial state of `MJMaterialSwitch` instance is set to all d
 MJMaterialSwitch has many prateters to customize behaviors as you like.
 
 #### Style and size
-#### MJMaterialSwitchStyle
 ```
 //MARK: - Switch type
 public enum MJMaterialSwitchStyle {
     case light, dark, medium
 }
-```
-#### MJMaterialSwitchSize
 
-```
 //MARK: - Initial MJMaterialSwitch size (big, normal, small)
 public enum MJMaterialSwitchSize {
     case big, normal, small
 }
 ```
- 
- ![Screen shot](Docs/style_and_size.gif)
+ <img src="MJMaterialSwitch.png" height="480" width="320" align="center" />
+ ![Screen shot]()
 
  ![Screen shot](Docs/bounce_ripple_enabled.gif)
-
-## Change History
-1.1   Bug Fix
-
-1.0.0 Initial Release
-
-## Requirements
-iOS 7.0 or later
 
 ## Author
 Jaleel Nazir <nazirjaleel@gmail.com>
