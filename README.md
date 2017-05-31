@@ -3,7 +3,7 @@
 ![MJMaterialSwitch](TiitleTheme.png)
 
 ## Overview
-<img src="Docs/MJMaterialSwitch.png" width="250" align="right" />
+<img src="Property.png" width="250" align="right" />
 
 `MJMaterialSwitch` is google's material design like switch UI with animation features.
 
@@ -19,31 +19,34 @@ With this library, you can easily implement material design switch to your app.
 
 The simplest setup:
 
-```objective-c
-  MJMaterialSwitch *switch = [[MJMaterialSwitch alloc] init];
-  switch.center = CGPointMake(200, 200);
-  [self.view addSubview:switch];
+```Swift 
+let androidSwitchSmall = MJMaterialSwitch(withSize: .small, style: MJMaterialSwitchStyle.light, state: MJMaterialSwitchState.on)
+self.androidSwitchSmall.delegate = self
+self.view.addSubview(self.androidSwitchSmall)
 ```
 
 This is the simplest and easiest initialization. 
 The style, size and initial state of `MJMaterialSwitch` instance is set to all default value as shown below.
-
-<img src="Docs/simple.gif" width="200">
-
 
 ### Customize Behaviors
 MJMaterialSwitch has many prateters to customize behaviors as you like.
 
 #### Style and size
 #### MJMaterialSwitchStyle
-.light
-.dark
-.default
-
+```
+//MARK: - Switch type
+public enum MJMaterialSwitchStyle {
+    case light, dark, medium
+}
+```
 #### MJMaterialSwitchSize
-.big
-.normal
-.small
+
+```
+//MARK: - Initial MJMaterialSwitch size (big, normal, small)
+public enum MJMaterialSwitchSize {
+    case big, normal, small
+}
+```
  
  ![Screen shot](Docs/style_and_size.gif)
 
