@@ -25,7 +25,7 @@ public enum MJMaterialSwitchSize {
 
 
 protocol MJMaterialSwitchDelegate: class {
-    func switchStateChanged(_ currentState: MJMaterialSwitchState)
+    func switchStateChanged(_ switch: MJMaterialSwitch, currentState: MJMaterialSwitchState)
 }
 
 class MJMaterialSwitch: UIControl {
@@ -387,9 +387,9 @@ class MJMaterialSwitch: UIControl {
     func switchAreaTapped(recognizer: UITapGestureRecognizer) {
         // Delegate method
         if self.isOn {
-            self.delegate?.switchStateChanged(.off)
+            self.delegate?.switchStateChanged(self, currentState: .off)
         } else {
-            self.delegate?.switchStateChanged(.on)
+            self.delegate?.switchStateChanged(self, currentState: .on)
         }
         self.changeThumbState()
     }
@@ -638,9 +638,9 @@ class MJMaterialSwitch: UIControl {
 
         // Delegate method
         if self.isOn {
-            self.delegate?.switchStateChanged(.off)
+            self.delegate?.switchStateChanged(self, currentState: .off)
         } else {
-            self.delegate?.switchStateChanged(.on)
+            self.delegate?.switchStateChanged(self, currentState: .on)
         }
         self.changeThumbState()
     }
