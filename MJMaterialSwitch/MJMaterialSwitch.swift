@@ -168,8 +168,8 @@ class MJMaterialSwitch: UIControl {
 
         self.isEnabled = true
 
-        self.isRippleEnabled = true
-        self.isBounceEnabled = true
+//        self.isRippleEnabled = true
+//        self.isBounceEnabled = true
 
         self.bounceOffset = 3.0
 
@@ -384,7 +384,7 @@ class MJMaterialSwitch: UIControl {
     }
 
     //The event handling method
-    func switchAreaTapped(recognizer: UITapGestureRecognizer) {
+    @objc func switchAreaTapped(recognizer: UITapGestureRecognizer) {
         // Delegate method
         if self.isOn {
             self.delegate?.switchStateChanged(.off)
@@ -602,7 +602,7 @@ class MJMaterialSwitch: UIControl {
     }
 
     //MARK: - Event Actions
-    func onTouchDown(btn: UIButton, withEvent event: UIEvent) {
+    @objc func onTouchDown(btn: UIButton, withEvent event: UIEvent) {
 
         // print("touchDown called")
         if self.isRippleEnabled {
@@ -631,7 +631,7 @@ class MJMaterialSwitch: UIControl {
     }
 
     // Change thumb state when touchUPInside action is detected
-    func switchThumbTapped() {
+    @objc func switchThumbTapped() {
         // print("touch up inside")
         // print("track midPosX: %f", CGRectGetMidX(self.track.frame))
         // print("%@", NSStringFromCGRect(self.switchThumb.frame))
@@ -646,7 +646,7 @@ class MJMaterialSwitch: UIControl {
     }
 
     // Change thumb state when touchUPOutside action is detected
-    func onTouchUpOutsideOrCanceled(btn: UIButton, withEvent event: UIEvent) {
+    @objc func onTouchUpOutsideOrCanceled(btn: UIButton, withEvent event: UIEvent) {
 
         // print("Touch released at ouside")
         if let touch = event.touches(for: btn)?.first {
@@ -675,7 +675,7 @@ class MJMaterialSwitch: UIControl {
     }
 
     // Drag the switch thumb
-    func onTouchDragInside(btn: UIButton, withEvent event:UIEvent) {
+    @objc func onTouchDragInside(btn: UIButton, withEvent event:UIEvent) {
         //This code can go awry if there is more than one finger on the screen
         
         if let touch = event.touches(for: btn)?.first {
