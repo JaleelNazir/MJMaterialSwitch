@@ -3,7 +3,7 @@
 ![MJMaterialSwitch](TiitleTheme.png)
 
 ## Overview
-<img src="Property.png" width="250" align="right" />
+<img src="MJMaterialSwitch.png" width="250" align="right" />
 
 `MJMaterialSwitch` is google's material design like switch UI with animation features.
 
