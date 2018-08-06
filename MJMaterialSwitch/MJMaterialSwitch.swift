@@ -568,13 +568,13 @@ class MJMaterialSwitch: UIControl {
         }
 
         // Animation begins from here
-        rippleLayer.opacity = 0.0
+        rippleLayer?.opacity = 0.0
 
         CATransaction.begin()
 
         //remove layer after animation completed
         CATransaction.setCompletionBlock {
-            self.rippleLayer.removeFromSuperlayer()
+            self.rippleLayer?.removeFromSuperlayer()
             self.rippleLayer = nil
         }
 
@@ -593,7 +593,7 @@ class MJMaterialSwitch: UIControl {
         animation.animations = [scaleAnimation, alphaAnimation]
         animation.duration = 0.4
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        rippleLayer.add(animation, forKey: nil)
+        rippleLayer?.add(animation, forKey: nil)
 
         CATransaction.commit()
 
@@ -624,7 +624,7 @@ class MJMaterialSwitch: UIControl {
             animation.animations = [scaleAnimation, alphaAnimation]
             animation.duration = 0.4
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-            rippleLayer.add(animation, forKey: nil)
+            rippleLayer?.add(animation, forKey: nil)
             CATransaction.commit()
         }
         //  print("Ripple end pos: %@", NSStringFromCGRect(circleShape.frame))

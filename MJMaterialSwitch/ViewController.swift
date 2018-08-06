@@ -21,6 +21,8 @@ class ViewController: UIViewController, MJMaterialSwitchDelegate {
 
         let androidSwitchMedium = MJMaterialSwitch(withSize: .normal, style: MJMaterialSwitchStyle.medium, state: MJMaterialSwitchState.on)
         androidSwitchMedium.delegate = self
+        androidSwitchMedium.isBounceEnabled = false
+        androidSwitchMedium.isRippleEnabled = true
         self.view.addSubview(androidSwitchMedium)
 
 
