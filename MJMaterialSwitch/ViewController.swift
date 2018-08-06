@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, MJMaterialSwitchDelegate {
+class ViewController: UIViewController {
+
+    // Tags
+    let kSmallSwitch = 1
+    let kMediumSwitch = 2
+    let kLargeSwitch = 3
 
     var androidSwitchSmall : MJMaterialSwitch!
 
@@ -16,18 +21,20 @@ class ViewController: UIViewController, MJMaterialSwitchDelegate {
         super.viewDidLoad()
 
         self.androidSwitchSmall = MJMaterialSwitch(withSize: .small, style: MJMaterialSwitchStyle.light, state: MJMaterialSwitchState.on)
-        self.androidSwitchSmall.delegate = self
+        self.androidSwitchSmall.tag = kSmallSwitch
+        self.androidSwitchSmall.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControlEvents.valueChanged)
         self.view.addSubview(self.androidSwitchSmall)
 
         let androidSwitchMedium = MJMaterialSwitch(withSize: .normal, style: MJMaterialSwitchStyle.medium, state: MJMaterialSwitchState.on)
-        androidSwitchMedium.delegate = self
         androidSwitchMedium.isBounceEnabled = false
         androidSwitchMedium.isRippleEnabled = true
+        androidSwitchMedium.tag = kMediumSwitch
+        androidSwitchMedium.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControlEvents.valueChanged)
         self.view.addSubview(androidSwitchMedium)
 
-
         let androidSwitchLarge = MJMaterialSwitch(withSize: .big, style: MJMaterialSwitchStyle.dark, state: MJMaterialSwitchState.on)
-        androidSwitchLarge.delegate = self
+        androidSwitchLarge.tag = kLargeSwitch
+        androidSwitchLarge.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControlEvents.valueChanged)
         self.view.addSubview(androidSwitchLarge)
 
         self.androidSwitchSmall.center = self.view.center
@@ -38,15 +45,25 @@ class ViewController: UIViewController, MJMaterialSwitchDelegate {
         androidSwitchLarge.center = self.view.center
         androidSwitchLarge.center.y = self.view.center.y + 50
 
-
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    func switchStateChanged(_ currentState: MJMaterialSwitchState) {
-        print(currentState)
+    @objc func switchStateChanged(_ mjSwitch: MJMaterialSwitch) {
+
+        if mjSwitch.tag == kSmallSwitch {
+            print(mjSwitch.isOn, mjSwitch.tag, "Small")
+
+        } else if mjSwitch.tag == kMediumSwitch {
+
+            print(mjSwitch.isOn, mjSwitch.tag, "Medium")
+
+        } else if mjSwitch.tag == kLargeSwitch {
+            print(mjSwitch.isOn, mjSwitch.tag, "Large")
+
+        }
     }
 }
 

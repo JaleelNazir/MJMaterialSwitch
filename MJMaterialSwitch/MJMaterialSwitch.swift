@@ -23,17 +23,10 @@ public enum MJMaterialSwitchSize {
     case big, normal, small
 }
 
-
-protocol MJMaterialSwitchDelegate: class {
-    func switchStateChanged(_ currentState: MJMaterialSwitchState)
-}
-
 class MJMaterialSwitch: UIControl {
 
 
     //MARK: - Properties
-    //MARK:  Delegate
-    weak var delegate: MJMaterialSwitchDelegate? = nil
 
     //MARK:  State
     /** A Boolean value that represents switch's current state(ON/OFF). YES to ON, NO to OFF the switch */
@@ -385,12 +378,6 @@ class MJMaterialSwitch: UIControl {
 
     //The event handling method
     @objc func switchAreaTapped(recognizer: UITapGestureRecognizer) {
-        // Delegate method
-        if self.isOn {
-            self.delegate?.switchStateChanged(.off)
-        } else {
-            self.delegate?.switchStateChanged(.on)
-        }
         self.changeThumbState()
     }
 
@@ -427,11 +414,10 @@ class MJMaterialSwitch: UIControl {
         }) { (finished) in
 
             // change state to ON
-            if self.isOn {
+            if !self.isOn {
                 self.isOn = true // Expressly put this code here to change surely and send action correctly
                 self.sendActions(for: UIControlEvents.valueChanged)
             }
-            self.isOn = true
             // print("now isOn: %d", self.isOn)
             // print("thumb end pos: %@", NSStringFromCGRect(self.switchThumb.frame))
             // Bouncing effect: Move thumb a bit, for better UX
@@ -471,7 +457,6 @@ class MJMaterialSwitch: UIControl {
                 self.isOn = false // Expressly put this code here to change surely and send action correctly
                 self.sendActions(for: UIControlEvents.valueChanged)
             }
-            self.isOn = false
             // print("now isOn: %d", self.isOn)
             // print("thumb end pos: %@", NSStringFromCGRect(self.switchThumb.frame))
             // Bouncing effect: Move thumb a bit, for better UX
@@ -502,11 +487,10 @@ class MJMaterialSwitch: UIControl {
             self.track.backgroundColor = self.trackDisabledTintColor
         }
 
-        if self.isOn {
+        if !self.isOn {
             self.isOn = true
             self.sendActions(for: UIControlEvents.valueChanged)
         }
-        self.isOn = true
     }
 
     // Without animation
@@ -528,7 +512,6 @@ class MJMaterialSwitch: UIControl {
             self.isOn = false
             self.sendActions(for: UIControlEvents.valueChanged)
         }
-        self.isOn = false
     }
 
     // Initialize and appear ripple effect
@@ -636,12 +619,6 @@ class MJMaterialSwitch: UIControl {
         // print("track midPosX: %f", CGRectGetMidX(self.track.frame))
         // print("%@", NSStringFromCGRect(self.switchThumb.frame))
 
-        // Delegate method
-        if self.isOn {
-            self.delegate?.switchStateChanged(.off)
-        } else {
-            self.delegate?.switchStateChanged(.on)
-        }
         self.changeThumbState()
     }
 
@@ -698,5 +675,4 @@ class MJMaterialSwitch: UIControl {
             }
         }
     }
-
 }
