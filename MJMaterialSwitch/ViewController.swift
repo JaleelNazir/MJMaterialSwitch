@@ -43,7 +43,7 @@ class ViewController: UIViewController, MJMaterialSwitchDelegate {
         super.didReceiveMemoryWarning()
     }
 
-    func switchStateChanged(_ currentState: MJMaterialSwitchState) {
+    func switchStateChanged(_ switch: MJMaterialSwitch, currentState: MJMaterialSwitchState) {
         print(currentState)
     }
 }
