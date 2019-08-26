@@ -1,6 +1,7 @@
 # MJMaterialSwitch
-
-![MJMaterialSwitch](TiitleTheme.png)
+<p align="center">
+  <img src="https://github.com/JaleelNazir/MJMaterialSwitch/blob/master/TiitleTheme.png"  style="width: 600px;" />
+</p>
 
 ## Overview
 <img src="MJMaterialSwitch.png" width="250" align="right" />
