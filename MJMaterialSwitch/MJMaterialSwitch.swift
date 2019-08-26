@@ -190,11 +190,11 @@ class MJMaterialSwitch: UIControl {
         self.switchThumb.layer.shadowRadius = 2.0
 
         // Add events for user action
-        self.switchThumb.addTarget(self, action: #selector(self.onTouchDown(btn:withEvent:)), for: UIControlEvents.touchDown)
-        self.switchThumb.addTarget(self, action: #selector(onTouchUpOutsideOrCanceled(btn:withEvent:)), for: UIControlEvents.touchUpOutside)
-        self.switchThumb.addTarget(self, action: #selector(self.switchThumbTapped), for: UIControlEvents.touchUpInside)
-        self.switchThumb.addTarget(self, action: #selector(self.onTouchDragInside(btn:withEvent:)), for: UIControlEvents.touchDragInside)
-        self.switchThumb.addTarget(self, action: #selector(self.onTouchUpOutsideOrCanceled(btn:withEvent:)), for: UIControlEvents.touchCancel)
+        self.switchThumb.addTarget(self, action: #selector(self.onTouchDown(btn:withEvent:)), for: UIControl.Event.touchDown)
+        self.switchThumb.addTarget(self, action: #selector(onTouchUpOutsideOrCanceled(btn:withEvent:)), for: UIControl.Event.touchUpOutside)
+        self.switchThumb.addTarget(self, action: #selector(self.switchThumbTapped), for: UIControl.Event.touchUpInside)
+        self.switchThumb.addTarget(self, action: #selector(self.onTouchDragInside(btn:withEvent:)), for: UIControl.Event.touchDragInside)
+        self.switchThumb.addTarget(self, action: #selector(self.onTouchUpOutsideOrCanceled(btn:withEvent:)), for: UIControl.Event.touchCancel)
 
         self.addSubview(self.switchThumb)
 
@@ -397,7 +397,7 @@ class MJMaterialSwitch: UIControl {
     func changeThumbStateONwithAnimation() {
 
         // switch movement animation
-        UIView.animate(withDuration: 0.15, delay: 0.05, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.05, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 
             var thumbFrame = self.switchThumb.frame
             thumbFrame.origin.x = self.thumbOnPosition + self.bounceOffset
@@ -416,7 +416,7 @@ class MJMaterialSwitch: UIControl {
             // change state to ON
             if !self.isOn {
                 self.isOn = true // Expressly put this code here to change surely and send action correctly
-                self.sendActions(for: UIControlEvents.valueChanged)
+                self.sendActions(for: UIControl.Event.valueChanged)
             }
             // print("now isOn: %d", self.isOn)
             // print("thumb end pos: %@", NSStringFromCGRect(self.switchThumb.frame))
@@ -437,7 +437,7 @@ class MJMaterialSwitch: UIControl {
     func changeThumbStateOFFwithAnimation() {
 
         // switch movement animation
-        UIView.animate(withDuration: 0.15, delay: 0.05, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0.05, options: UIView.AnimationOptions.curveEaseInOut, animations: {
             var thumbFrame = self.switchThumb.frame
             thumbFrame.origin.x = self.thumbOffPosition - self.bounceOffset
             self.switchThumb.frame = thumbFrame
@@ -455,7 +455,7 @@ class MJMaterialSwitch: UIControl {
             // change state to OFF
             if self.isOn {
                 self.isOn = false // Expressly put this code here to change surely and send action correctly
-                self.sendActions(for: UIControlEvents.valueChanged)
+                self.sendActions(for: UIControl.Event.valueChanged)
             }
             // print("now isOn: %d", self.isOn)
             // print("thumb end pos: %@", NSStringFromCGRect(self.switchThumb.frame))
@@ -489,7 +489,7 @@ class MJMaterialSwitch: UIControl {
 
         if !self.isOn {
             self.isOn = true
-            self.sendActions(for: UIControlEvents.valueChanged)
+            self.sendActions(for: UIControl.Event.valueChanged)
         }
     }
 
@@ -510,7 +510,7 @@ class MJMaterialSwitch: UIControl {
 
         if self.isOn {
             self.isOn = false
-            self.sendActions(for: UIControlEvents.valueChanged)
+            self.sendActions(for: UIControl.Event.valueChanged)
         }
     }
 
@@ -575,7 +575,7 @@ class MJMaterialSwitch: UIControl {
         let animation = CAAnimationGroup()
         animation.animations = [scaleAnimation, alphaAnimation]
         animation.duration = 0.4
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         rippleLayer?.add(animation, forKey: nil)
 
         CATransaction.commit()
@@ -606,7 +606,7 @@ class MJMaterialSwitch: UIControl {
             let animation = CAAnimationGroup()
             animation.animations = [scaleAnimation, alphaAnimation]
             animation.duration = 0.4
-            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
             rippleLayer?.add(animation, forKey: nil)
             CATransaction.commit()
         }

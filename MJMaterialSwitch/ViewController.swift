@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     let kMediumSwitch = 2
     let kLargeSwitch = 3
 
+    var btn: UIButton!
+
     var androidSwitchSmall : MJMaterialSwitch!
 
     override func viewDidLoad() {
@@ -22,19 +24,19 @@ class ViewController: UIViewController {
 
         self.androidSwitchSmall = MJMaterialSwitch(withSize: .small, style: MJMaterialSwitchStyle.light, state: MJMaterialSwitchState.on)
         self.androidSwitchSmall.tag = kSmallSwitch
-        self.androidSwitchSmall.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControlEvents.valueChanged)
+        self.androidSwitchSmall.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControl.Event.valueChanged)
         self.view.addSubview(self.androidSwitchSmall)
 
         let androidSwitchMedium = MJMaterialSwitch(withSize: .normal, style: MJMaterialSwitchStyle.medium, state: MJMaterialSwitchState.on)
         androidSwitchMedium.isBounceEnabled = false
         androidSwitchMedium.isRippleEnabled = true
         androidSwitchMedium.tag = kMediumSwitch
-        androidSwitchMedium.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControlEvents.valueChanged)
+        androidSwitchMedium.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControl.Event.valueChanged)
         self.view.addSubview(androidSwitchMedium)
 
         let androidSwitchLarge = MJMaterialSwitch(withSize: .big, style: MJMaterialSwitchStyle.dark, state: MJMaterialSwitchState.on)
         androidSwitchLarge.tag = kLargeSwitch
-        androidSwitchLarge.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControlEvents.valueChanged)
+        androidSwitchLarge.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControl.Event.valueChanged)
         self.view.addSubview(androidSwitchLarge)
 
         self.androidSwitchSmall.center = self.view.center
