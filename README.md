@@ -45,6 +45,8 @@ public enum MJMaterialSwitchSize {
 ```
 ## Author
 Jaleel Nazir <nazirjaleel@gmail.com>
+<br>
+Buy me coffe:
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/mjaleelnazir)
 
 ## License
