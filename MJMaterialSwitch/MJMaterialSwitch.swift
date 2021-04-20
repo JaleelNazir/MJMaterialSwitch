@@ -41,7 +41,7 @@ class MJMaterialSwitch: UIControl {
     var switchThumb: UIButton!
     var track: UIView!
     
-    var edgeInset: UIEdgeInsets = UIEdgeInsets.init(top: 2, left: 4, bottom: 2, right: 4)
+    var tarckEdgeInset: UIEdgeInsets = UIEdgeInsets.init(top: 12, left: 0, bottom: 12, right: 0)
     
     fileprivate var thumbOnPosition: CGFloat!
     fileprivate var thumbOffPosition: CGFloat!
@@ -110,21 +110,21 @@ class MJMaterialSwitch: UIControl {
         
         self.track.frame = self.getTrackFrame()
         self.track.layer.cornerRadius = min(self.track.frame.size.height, self.track.frame.size.width) / 2
-
+        
         self.switchThumb.frame = self.getThumbFrame()
         self.switchThumb.layer.cornerRadius = self.switchThumb.frame.size.height / 2
-
+        
         self.setOn(on: self.isOn, animated: self.isRippleEnabled)
     }
     
     fileprivate func getTrackFrame() -> CGRect {
         var trackFrame = self.bounds
-        trackFrame.size.height = (self.bounds.size.height / 2) - (self.edgeInset.top + self.edgeInset.bottom)
+        trackFrame.size.height = (self.bounds.size.height - self.tarckEdgeInset.top - self.tarckEdgeInset.bottom)
         
         let thumbWidth = (trackFrame.size.height + 10) / 2
-        trackFrame.size.width = frame.size.width - (self.edgeInset.left + self.edgeInset.right + thumbWidth)
+        trackFrame.size.width = frame.size.width - (self.tarckEdgeInset.left + self.tarckEdgeInset.right + thumbWidth)
         
-        trackFrame.origin.x = 0.0 + self.edgeInset.left + (thumbWidth / 2)
+        trackFrame.origin.x = 0.0 + self.tarckEdgeInset.left + (thumbWidth / 2)
         trackFrame.origin.y = (self.frame.size.height / 2)  - (trackFrame.size.height / 2)
         return trackFrame
     }
@@ -134,11 +134,11 @@ class MJMaterialSwitch: UIControl {
         thumbFrame.size.height = self.track.frame.size.height + 10
         thumbFrame.size.width = thumbFrame.size.height
         
-        if !isOn {
-            thumbFrame.origin.x = max(self.track.frame.minX - (thumbFrame.size.width / 2), 0.0)
+        if isOn {
+            thumbFrame.origin.x = self.track.frame.maxX - (thumbFrame.size.width / 2)
             thumbFrame.origin.y = (frame.size.height / 2)  - (thumbFrame.size.height / 2)
         } else {
-            thumbFrame.origin.x = min(self.track.frame.maxX - (thumbFrame.size.width / 2), self.frame.maxX - thumbFrame.size.width)
+            thumbFrame.origin.x = self.track.frame.minX - (thumbFrame.size.width / 2)
             thumbFrame.origin.y = (frame.size.height / 2)  - (thumbFrame.size.height / 2)
         }
         return thumbFrame
@@ -421,24 +421,24 @@ class MJMaterialSwitch: UIControl {
     @objc func onTouchDragInside(btn: UIButton, withEvent event:UIEvent) {
         //This code can go awry if there is more than one finger on the screen
         
-//        if let touch = event.touches(for: btn)?.first {
-//
-//            let prevPos = touch.previousLocation(in: btn)
-//            let pos = touch.location(in: btn)
-//            let dX = pos.x - prevPos.x
-//
-//            //Get the original position of the thumb
-//            var thumbFrame = btn.frame
-//
-//            thumbFrame.origin.x += dX
-//            //Make sure it's within two bounds
-//            thumbFrame.origin.x = min(thumbFrame.origin.x, thumbOnPosition)
-//            thumbFrame.origin.x = max(thumbFrame.origin.x, thumbOffPosition)
-//
-//            //Set the thumb's new frame if need to
-//            if thumbFrame.origin.x != btn.frame.origin.x {
-//                btn.frame = thumbFrame
-//            }
-//        }
+        //        if let touch = event.touches(for: btn)?.first {
+        //
+        //            let prevPos = touch.previousLocation(in: btn)
+        //            let pos = touch.location(in: btn)
+        //            let dX = pos.x - prevPos.x
+        //
+        //            //Get the original position of the thumb
+        //            var thumbFrame = btn.frame
+        //
+        //            thumbFrame.origin.x += dX
+        //            //Make sure it's within two bounds
+        //            thumbFrame.origin.x = min(thumbFrame.origin.x, thumbOnPosition)
+        //            thumbFrame.origin.x = max(thumbFrame.origin.x, thumbOffPosition)
+        //
+        //            //Set the thumb's new frame if need to
+        //            if thumbFrame.origin.x != btn.frame.origin.x {
+        //                btn.frame = thumbFrame
+        //            }
+        //        }
     }
 }

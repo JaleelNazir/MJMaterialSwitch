@@ -21,11 +21,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdt-HR-OBN" customClass="MJMaterialSwitch" customModule="MJMaterialSwitch" customModuleProvider="target">
-                                <rect key="frame" x="177" y="408" width="60" height="40"/>
+                                <rect key="frame" x="185" y="408" width="44" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="LZs-pr-rAW"/>
-                                    <constraint firstAttribute="width" constant="60" id="iTF-kZ-5QF"/>
+                                    <constraint firstAttribute="width" constant="44" id="iTF-kZ-5QF"/>
                                 </constraints>
                             </view>
                         </subviews>

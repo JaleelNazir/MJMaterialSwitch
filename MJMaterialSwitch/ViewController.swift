@@ -22,8 +22,9 @@ class ViewController: UIViewController {
 
         let xPos: CGFloat = (UIScreen.main.bounds.width / 2 ) - 22.5
         let yPos: CGFloat = (UIScreen.main.bounds.height / 2 ) + 50.0
-        self.switch2 = MJMaterialSwitch(frame: CGRect(x: xPos , y: yPos, width: 45, height: 30))
+        self.switch2 = MJMaterialSwitch(frame: CGRect(x: xPos , y: yPos, width: 64, height: 60))
         self.switch2.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControl.Event.valueChanged)
+        switch2.tarckEdgeInset = UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
         self.switch2.tag = 2
         
         //
