@@ -12,37 +12,60 @@ This library has cool and sophisticated animations, ripple effect and bounce eff
 
 With this library, you can easily implement material design switch to your app. 
 
+<img src="MJMaterialSwitch1.png" width="600" align="center" />
+
 <br/>
 
 <br/>
 
 ## Usage
 
-The simplest setup:
+The simplest setup by code:
 
 ```Swift 
-let androidSwitchSmall = MJMaterialSwitch(withSize: .small, style: MJMaterialSwitchStyle.light, state: MJMaterialSwitchState.on)
-self.androidSwitchSmall.delegate = self
-self.view.addSubview(self.androidSwitchSmall)
+let xPos: CGFloat = (UIScreen.main.bounds.width / 2 ) - 22.5
+let yPos: CGFloat = (UIScreen.main.bounds.height / 2 ) + 50.0
+self.switch2 = MJMaterialSwitch(frame: CGRect(x: xPos , y: yPos, width: 64, height: 60))
+self.switch2.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControl.Event.valueChanged)
+self.switch2.tarckEdgeInset = UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
+self.switch2.tag = 2
+switch2.trackOnTintColor = UIColor.red.withAlphaComponent(0.6)
+switch2.thumbOnTintColor = UIColor.red
+
+// Call update UI method in last.
+switch2.updateUI()
+
+self.view.addSubview(self.switch2)
 ```
 
 This is the simplest and easiest initialization. 
-The style, size and initial state of `MJMaterialSwitch` instance is set to all default value as shown below.
+
+## Usage by xib and Storyboard
+
+ - Create `UIView` and set the `MJMaterialSwitch` class.
+ - Create `IBOutlet` to add `valueChanged` target for the click actions
 
 ### Customize Behaviors
 MJMaterialSwitch has many prateters to customize behaviors as you like.
 
 #### Style and size
 ```
-//MARK: - Switch type
-public enum MJMaterialSwitchStyle {
-    case light, dark, medium
-}
-//MARK: - Initial MJMaterialSwitch size (big, normal, small)
-public enum MJMaterialSwitchSize {
-    case big, normal, small
-}
+
+var thumbOnTintColor: UIColor!
+var thumbOffTintColor: UIColor!
+
+var trackOnTintColor: UIColor!
+var trackOffTintColor: UIColor!
+
+var thumbDisabledTintColor: UIColor!
+var trackDisabledTintColor: UIColor!
+
+var isBounceEnabled: Bool = false
+var isRippleEnabled: Bool = true
+var rippleFillColor: UIColor = .gray
+    
 ```
+
 ## Author
 Jaleel Nazir <nazirjaleel@gmail.com>
 <br>
