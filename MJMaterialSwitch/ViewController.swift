@@ -10,15 +10,30 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    // Tags
-    let kSmallSwitch = 1
-    let kMediumSwitch = 2
-    let kLargeSwitch = 3
-
-    var androidSwitchSmall: MJMaterialSwitch!
+    @IBOutlet weak var switch1: MJMaterialSwitch!
+    var switch2: MJMaterialSwitch!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // set target 
+        self.switch1.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControl.Event.valueChanged)
+        self.switch1.tag = 1
+
+        let xPos: CGFloat = (UIScreen.main.bounds.width / 2 ) - 22.5
+        let yPos: CGFloat = (UIScreen.main.bounds.height / 2 ) + 50.0
+        self.switch2 = MJMaterialSwitch(frame: CGRect(x: xPos , y: yPos, width: 45, height: 30))
+        self.switch2.addTarget(self, action: #selector(switchStateChanged(_:)), for: UIControl.Event.valueChanged)
+        self.switch2.tag = 2
+        
+        //
+        switch2.trackOnTintColor = UIColor.red.withAlphaComponent(0.6)
+        switch2.thumbOnTintColor = UIColor.red
+        
+        // Call update UI method in last.
+        switch2.updateUI()
+        
+        self.view.addSubview(self.switch2)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,7 +41,7 @@ class ViewController: UIViewController {
     }
 
     @objc func switchStateChanged(_ mjSwitch: MJMaterialSwitch) {
-        print(mjSwitch.isOn, mjSwitch.tag, "Large")
+        print(mjSwitch.isOn, mjSwitch.tag)
     }
 }
 
